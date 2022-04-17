@@ -1,0 +1,51 @@
+.filtros {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .Option {
+    border-radius: 25px;
+    margin: 0 50px;
+    padding: 12px;
+    font-size: 8px;
+    background: #8C30F5;
+    order: 1;
+    text-decoration: none;
+    display: flex;
+    align-self: center;
+    flex-grow: 0;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    text-align: center;
+    font-family: 'Fredoka', sans-serif;
+    text-shadow: 2px 2px 2px blue;
+  }
+
+  .ActiveOption {
+    border-radius: 25px;
+    margin: 0 50px;
+    padding: 12px;
+    font-size: 8px;
+    background: blue;
+    order: 1;
+    text-decoration: none;
+    display: flex;
+    align-self: center;
+    flex-grow: 0;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    font-family: 'Fredoka', sans-serif;
+   
+    text-shadow: 2px 2px 2px blue;
+  }
+  
+
+  .ActiveOption:hover {
+    box-shadow:  0 0 20px blue;
+  }
+  .link_tienda {
+    margin-left: 50px;
+  }

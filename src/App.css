@@ -1,0 +1,68 @@
+.App-header {
+  background-image: url(https://i.postimg.cc/nrsnLcPJ/snow.png); 
+  animation: fondo 40s linear infinite;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom:  0px;
+}
+
+@keyframes fondo {
+  0% {
+    background-position: 0px 0px; }
+  100% {
+    background-position: 500px 1000px, 400px 400px, 300px 300px; } }
+
+.card_products {
+  border-radius: 80px;
+  box-shadow:  0 0 20px blue;
+  transition: 2s;
+
+
+}
+.card_products:hover{
+  transform: scale(1.2);
+}
+
+.contenedor_productos {
+  padding: 30px; 
+  font-family: 'Redressed', cursive;
+  font-size: large;
+  margin: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 300px);
+  grid-gap: 20px;  
+}
+.caja {
+  padding: 20px; 
+  background-image: url("https://i.postimg.cc/TP3010Dr/bgfondo.jpg");  
+  text-align: center;
+  letter-spacing: 0.2em;
+  font-family: 'Fredoka', sans-serif;
+  color: aliceblue;
+  border-radius: 30px;
+  text-shadow: 2px 2px 2px blue
+}
+.caja:hover {
+  box-shadow:  0 0 20px blue;
+}
+
+.stock {
+  font-size: small;
+  letter-spacing: 0px;
+  
+  
+}
+.text_busqueda{
+  text-align: center;
+  color: blueviolet;
+  font-size: xx-large;
+  font-family: 'Redressed', cursive;
+  animation: snow 10s linear infinite; }
+
+  @keyframes snow {
+    0% {
+      margin-right: 500px; }
+     100% {
+      margin-left: 500px  } }

@@ -1,0 +1,12 @@
+.banner {
+    background-image:url("https://i.postimg.cc/ZqFQrtdy/fondotesterver.jpg") ;
+    background-size: contain;
+    color: aliceblue;
+    font-family: 'VT323', monospace;
+    font-size:48px;
+    text-shadow: 8px 8px 8px black;
+    display: flex;
+    flex-direction: row; 
+    justify-content: center;
+    align-items: center;
+  }
