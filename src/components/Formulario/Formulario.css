@@ -1,0 +1,52 @@
+.form {
+    display: flex;
+    flex-direction: column;
+   margin-left: 300px;
+    width: 500px;
+    height: 400px;
+
+}
+
+.form_text{
+    color: blueviolet;
+    text-align: center;
+}
+.form_campo {
+    margin: 10px;
+    padding: 10px;
+}
+
+.form_button {
+    background-color: blueviolet;
+    border: transparent;
+    color: aliceblue;
+    width: 100px;
+    border-radius: 3px;
+    height: 50px;
+    margin-left: 200px;
+  }
+
+.form_div {
+    text-align: center;
+    
+}
+
+.form_map {
+    list-style: none;
+    color: blueviolet;
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.form_list {
+    padding-left: 80px;
+}
+
+.form_img {
+    width:50px ;
+    height:50px ;
+    border-radius: 80px;
+    box-shadow:  0 0 20px blue;
+    transition: 2s;
+}

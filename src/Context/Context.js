@@ -81,10 +81,11 @@ export const CartContextProvider = ({ children }) => {
     }
     
     const finalizarCompra = () => {
-        setCart([])
-        swal(" 🐈 Gracias por tu compra  🐈 !!")
+        console.log("di click")
+        
        
-       
+        
+   
 
     }
 

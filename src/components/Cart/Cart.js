@@ -3,6 +3,7 @@ import { useContext } from "react"
 import CartContext from '../../Context/Context'
 import { Link } from 'react-router-dom'
 
+
  const Cart = () => {
     const { cart, borrarCarrito,borrarProducto, precioFinal, borrarTodos, finalizarCompra, getQuantity  } = useContext(CartContext)
 
@@ -13,6 +14,7 @@ import { Link } from 'react-router-dom'
             <div className='cart'>
             <h1>NO HAY PRODUCTOS EN CARRITO</h1>
             <Link to='/' className='cart_option'> IR A LA TIENDA </Link>
+            <Link to='/compra' className='cart_option'>formulario</Link>
             </div>
         )
         
@@ -22,7 +24,7 @@ import { Link } from 'react-router-dom'
            <div className='cart'>
             <h1 className='cart'>CARRITO DE COMPRAS ! 🐈</h1>
             <button className='button_compra' onClick={borrarCarrito}>Vaciar carrito</button>
-            <button className='button_compra_final' onClick= {() => finalizarCompra()}>COMPRAR !! 🐈</button>
+            <button className='button_compra_final' onClick={finalizarCompra}><Link to='/compra' className='button_compra_final'>Comprar !</Link></button>
             </div>
             <p className='cart_compra'>Total Compra: $ {precioFinal()}</p>
             <ul className='cart_text'>
