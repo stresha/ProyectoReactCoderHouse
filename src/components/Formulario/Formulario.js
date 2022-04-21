@@ -1,32 +1,50 @@
 import './Formulario.css'
-import { useForm } from 'react-hook-form'
+
 import { useState } from "react";
 import CartContext from '../../Context/Context'
 import { useContext } from "react"
 import { firestoreDb } from '../../servicos/main'
 import {addDoc, collection} from 'firebase/firestore'
 
- 
+const Formulario = () => {
 
 
- const Formulario = () => {
-
+//   const collectionRef = collection(firestoreDb, "products");
   const { cart , precioFinal} = useContext(CartContext)
 
-    const { register, handleSubmit , errors} = useForm();
+//   const [Datos, setDatos] = useState({
+//     nombre: "",
+//     telefono: "",
+//     email: "",
+//   });
+//   function handleSubmit(evt) {
+//     evt.preventDefault();
+// }
 
-    const {Entradas, setEntradas}   = useState([])
-    
-    
-    const onSubmit = (data, e) => {
-      console.log(data)
-      setEntradas([
-        ...Entradas,
-        data
-      ])
-      e.target.reset()
-    }
-    
+// function handleChange(e) {
+//   const { target } = e;
+//   const { nombre, valor } = target;
+//   const newDatos = {
+//     ...Datos,
+//     [nombre]: valor,
+//   };
+//   setDatos(newDatos);
+// }
+
+// const crearOrden = () => {
+//   const objOrden = {
+//     buyer: {
+//       nombre: Datos.nombre,
+//       telefono: Datos.telefono,
+//       email: Datos.email,
+//     },
+//     items: cart,
+//     total: precioFinal,
+//   };
+// }
+  
+
+
     return (
 
       <div className='form_div'>
@@ -39,19 +57,13 @@ import {addDoc, collection} from 'firebase/firestore'
                     <p> {prod.quantity} X {prod.price}</p> 
                     </li>)}
             </ul>
-      <form className='form' onSubmit={handleSubmit(onSubmit)}>
-        <input  className='form_campo' placeholder="Ingrese nombre"{...register("nombre", { required: true, maxLength: 20,  message: 'campo es requerido' })}></input>
-        <span >
-          {errors?.nombre?.message}
-        </span>
-        <input className='form_campo' placeholder="Ingrese telefono" type="number"{...register("telefono", { required: true, maxLength: 20 , message: 'campo es requerido' })}></input>
-        <span >
-          {errors?.telefono?.message}
-        </span>
-        <input className='form_campo' placeholder="Ingrese mail" type="email"{...register("mail", { required: true, maxLength: 20 ,  message: 'campo es requerido'})}></input>
-        <span >
-          {errors?.mail?.message}
-        </span>
+      <form className='form' >
+        <input  className='form_campo' placeholder="Ingrese nombre"></input>
+        
+        <input className='form_campo' placeholder="Ingrese telefono" type="number"></input>
+        
+        <input className='form_campo' placeholder="Ingrese mail" type="email"></input>
+        
         <button  type="submit" className='form_button'>Enviar</button>
       </form>
 
@@ -59,6 +71,6 @@ import {addDoc, collection} from 'firebase/firestore'
     
     </div>
     )
-  };
+  }
 
 export default Formulario

@@ -10,7 +10,6 @@ import { CartContextProvider } from './Context/Context'
 import Formulario from './components/Formulario/Formulario';
 
 
-
 function App() {
  
   
@@ -26,7 +25,7 @@ function App() {
       <Routes>
       <Route path='/compra' element={<Formulario />} />
       <Route path='/' element={<ItemListContainer />} />
-      <Route path='/category/:categoryId' element={<ItemListContainer />} />
+      <Route path='/category/:categoryId' element={<ItemListContainer/>} />
       <Route path='/item/:id' element={<ItemDetailContainer />} />
       <Route path='/cart' element={<Cart />} />
       </Routes>
