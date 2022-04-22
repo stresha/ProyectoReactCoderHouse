@@ -7,41 +7,50 @@ import { firestoreDb } from '../../servicos/main'
 import {addDoc, collection} from 'firebase/firestore'
 
 const Formulario = () => {
+const { cart , precioFinal} = useContext(CartContext)
+
+  const [Datos, setDatos] = useState({
+    nombre: "",
+    // telefono: "",
+    // email: "",
+  });
 
 
-//   const collectionRef = collection(firestoreDb, "products");
-  const { cart , precioFinal} = useContext(CartContext)
+ const cambio = (event) => {
+   setDatos({
+     ...Datos, 
+     [event.target.name]: event.target.value
+   })
+ }
 
-//   const [Datos, setDatos] = useState({
-//     nombre: "",
-//     telefono: "",
-//     email: "",
-//   });
-//   function handleSubmit(evt) {
-//     evt.preventDefault();
-// }
 
-// function handleChange(e) {
-//   const { target } = e;
-//   const { nombre, valor } = target;
-//   const newDatos = {
-//     ...Datos,
-//     [nombre]: valor,
-//   };
-//   setDatos(newDatos);
-// }
 
-// const crearOrden = () => {
-//   const objOrden = {
-//     buyer: {
-//       nombre: Datos.nombre,
-//       telefono: Datos.telefono,
-//       email: Datos.email,
-//     },
-//     items: cart,
-//     total: precioFinal,
-//   };
-// }
+ const enviar = (event) => {
+  event.preventDefault();
+  console.log(Datos.nombre + "" + Datos.telefono + "" + Datos.email)
+ }
+
+
+
+
+const crearOrden = () => {
+  const objOrden = {
+    buyer: {
+      nombre: Datos.nombre,
+      telefono: Datos.telefono,
+      email: Datos.email,
+    },
+    items: cart,
+    total: precioFinal()
+  };
+
+
+  const collectionRef = collection(firestoreDb, 'orders')
+  addDoc(collectionRef, objOrden ).then(response => {
+    console.log(response)
+  })
+
+}
   
 
 
@@ -57,14 +66,14 @@ const Formulario = () => {
                     <p> {prod.quantity} X {prod.price}</p> 
                     </li>)}
             </ul>
-      <form className='form' >
-        <input  className='form_campo' placeholder="Ingrese nombre"></input>
+      <form className='form' onSubmit={enviar}>
+        <input  className='form_campo' placeholder="Ingrese nombre" type="text" name="nombre" onChange={cambio} maxLength="10" value={Datos.nombre}  required></input>
         
-        <input className='form_campo' placeholder="Ingrese telefono" type="number"></input>
+        <input className='form_campo' placeholder="Ingrese telefono" type="number" name="telefono" onChange={cambio}  maxLength="10" value={Datos.telefono} required></input>
         
-        <input className='form_campo' placeholder="Ingrese mail" type="email"></input>
+        <input className='form_campo' placeholder="Ingrese mail" type="email" name="email" onChange={cambio} maxLength="10" value={Datos.email} required></input>
         
-        <button  type="submit" className='form_button'>Enviar</button>
+        <button  type="submit" className='form_button'  onClick={crearOrden}>Enviar</button>
       </form>
 
      

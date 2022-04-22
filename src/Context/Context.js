@@ -57,6 +57,8 @@ export const CartContextProvider = ({ children }) => {
         console.log(cart)
     }
 
+
+    
     //borra todos esos productos del grupo (igual a item anterior)
     const borrarTodos  = (id) => {
         let carritoActualizado = cart.filter((item) => item.id !== id); // con esto si lego a 0 desaparece
