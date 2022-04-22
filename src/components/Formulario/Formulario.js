@@ -4,7 +4,8 @@ import { useState } from "react";
 import CartContext from '../../Context/Context'
 import { useContext } from "react"
 import { firestoreDb } from '../../servicos/main'
-import {addDoc, collection} from 'firebase/firestore'
+import {addDoc, collection, doc} from 'firebase/firestore'
+import swal from 'sweetalert';
 
 const Formulario = () => {
 const { cart , precioFinal} = useContext(CartContext)
@@ -48,6 +49,7 @@ const crearOrden = () => {
   const collectionRef = collection(firestoreDb, 'orders')
   addDoc(collectionRef, objOrden ).then(response => {
     console.log(response)
+  
   })
 
 }
@@ -71,7 +73,7 @@ const crearOrden = () => {
         
         <input className='form_campo' placeholder="Ingrese telefono" type="number" name="telefono" onChange={cambio}  maxLength="10" value={Datos.telefono} required></input>
         
-        <input className='form_campo' placeholder="Ingrese mail" type="email" name="email" onChange={cambio} maxLength="10" value={Datos.email} required></input>
+        <input className='form_campo' placeholder="Ingrese mail" type="email" name="email" onChange={cambio} maxLength="20" value={Datos.email} required></input>
         
         <button  type="submit" className='form_button'  onClick={crearOrden}>Enviar</button>
       </form>

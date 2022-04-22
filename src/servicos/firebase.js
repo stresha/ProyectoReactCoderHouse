@@ -36,7 +36,7 @@ export const getProductById = (productId) => {
 
 export const getCategories = () => {
     return new Promise((resolve, reject) => {
-        const collectionRef = collection(firestoreDb, 'categories')
+        const collectionRef = collection(firestoreDb, 'category')
 
       getDocs(collectionRef).then(querySnapshot => {
         const categories = querySnapshot.docs.map(doc => {
