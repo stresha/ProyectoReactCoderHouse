@@ -14,7 +14,6 @@ import { Link } from 'react-router-dom'
             <div className='cart'>
             <h1>NO HAY PRODUCTOS EN CARRITO</h1>
             <Link to='/' className='cart_option'> IR A LA TIENDA </Link>
-            <Link to='/compra' className='cart_option'>formulario</Link>
             </div>
         )
         
@@ -28,7 +27,7 @@ import { Link } from 'react-router-dom'
             </div>
             <p className='cart_compra'>Total Compra: $ {precioFinal()}</p>
             <ul className='cart_text'>
-                {cart.map(prod => <li key={prod.id}> <img className='cart_img' src={prod.img}/> 
+                {cart.map(prod => <li key={prod.id}> <img className='cart_img' src={prod.img} alt="product"/> 
                     <p>{prod.name}</p> 
                     <p> precio unidad $ {prod.price}</p>
                     <p>Cantidad elegida : {prod.quantity}</p> 

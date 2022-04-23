@@ -10,7 +10,7 @@ import CartContext from '../../Context/Context'
 //
 const ItemDetail  = ({ name, id, price, description, stock, img }) => {
  
-  const { agregarProducto , estaEnCarrito} = useContext(CartContext)
+  const { agregarProducto } = useContext(CartContext)
   const compraOnAdd = (count) => {
         agregarProducto({ id, name, price, img}, count)
         setquantity(count)

@@ -37,10 +37,10 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    color: aliceblue;
+    color: fuchsia;
     text-align: center;
     font-family: 'Fredoka', sans-serif;
-    text-shadow: 2px 2px 2px blue;
+    text-shadow: 4px 4px 4px blueviolet;
 }
 
 .cart_img{

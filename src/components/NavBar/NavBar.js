@@ -45,7 +45,7 @@ const NavBar = () => {
           
           <div className="filtros">
             <Link to='/' className='link_tienda'>
-              <h1>Tienda</h1>
+              <h1 className='form_text' >Tienda</h1>
             </Link>
             {getQuantity() > 0  && <CartWidget/> }  
             

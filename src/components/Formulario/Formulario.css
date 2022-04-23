@@ -8,8 +8,24 @@
 }
 
 .form_text{
-    color: blueviolet;
+    font-family: 'Fredoka', sans-serif;
     text-align: center;
+    color: transparent;
+    background-image: linear-gradient(to left, blueviolet, blue, gray, fuchsia);    
+    background-clip: text;
+    animation: color 10s linear infinite;
+    background-size: 500%;    
+    
+}
+
+@keyframes color {
+    from {
+        background-position: 0% 50%;
+    }
+
+    to {
+        background-position: 100% 50%;
+    }
 }
 .form_campo {
     margin: 10px;
@@ -24,6 +40,7 @@
     border-radius: 3px;
     height: 50px;
     margin-left: 200px;
+    font-family: 'Fredoka', sans-serif;
   }
 
 .form_div {
@@ -41,6 +58,7 @@
 
 .form_list {
     padding-left: 80px;
+    font-family: 'Fredoka', sans-serif;
 }
 
 .form_img {
@@ -50,3 +68,5 @@
     box-shadow:  0 0 20px blue;
     transition: 2s;
 }
+
+
