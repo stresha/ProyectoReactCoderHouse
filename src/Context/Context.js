@@ -1,12 +1,13 @@
 import { createContext, useState } from "react";
-import { Link } from "react-router-dom";
-import swal from "sweetalert";
+
 
 const Context = createContext()
 
+
+
 export const CartContextProvider = ({ children }) => {
     const [cart, setCart] = useState([])
-    console.log(cart)
+
     
     const agregarProducto = (product, quantity) => {
         
@@ -38,8 +39,6 @@ export const CartContextProvider = ({ children }) => {
     //borra 1 producto 
 
     const borrarProducto = (id ) => {
-       console.log("borrarProducto")
-       console.log(id)
         cart.filter((prod) => {
             if(prod.id===id) {
                 if (prod.quantity > 1) {
@@ -54,7 +53,8 @@ export const CartContextProvider = ({ children }) => {
             }
   
         })
-        console.log(cart)
+        precioFinal()
+    
     }
 
 
@@ -71,26 +71,17 @@ export const CartContextProvider = ({ children }) => {
         for (const iterator of cart) {
             total += iterator.quantity * iterator.price;
         } 
-        console.log(total)
         return total
+        
     
     }
+
 
     // vuelve carrito un array vacio
     const borrarCarrito = () => {
         setCart([])
-        console.log("aca borrar carrito")
     }
     
-    const finalizarCompra = () => {
-        console.log("di click")
-        
-       
-        
-   
-
-    }
-
     //sumamos cantidad al lado del carrito
     const getQuantity = () => {
         let count = 0
@@ -118,7 +109,6 @@ export const CartContextProvider = ({ children }) => {
             borrarProducto,
             precioFinal,
             borrarTodos,
-            finalizarCompra,
             estaEnCarrito
 
            

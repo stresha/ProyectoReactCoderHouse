@@ -4,7 +4,7 @@ import { useState } from "react";
 import CartContext from '../../Context/Context'
 import { useContext } from "react"
 import { firestoreDb } from '../../servicos/main'
-import {addDoc, collection, getDoc, query, where, getDocs, documentId, doc, writeBatch} from 'firebase/firestore';
+import {addDoc, collection, query, where, getDocs, documentId, writeBatch} from 'firebase/firestore';
 import swal from 'sweetalert';
 
 
@@ -14,6 +14,9 @@ const batch = writeBatch(firestoreDb);
 const outStock = [];
 const ids = cart.map((prod) => prod.id);
 const collectionRef = collection(firestoreDb, "products");
+const [ Purchase, setPurchase ] = useState(false);
+
+
 
 const [Datos, setDatos] = useState({
     nombre: "",
@@ -32,8 +35,8 @@ const [Datos, setDatos] = useState({
 
 // rnn + borrar cart
  const enviar = (event) => {
-  event.preventDefault();
-  borrarCarrito()
+  
+  
  }
 
 
@@ -85,13 +88,14 @@ const crearOrden = () => {
         console.log(error);
       }
     });
-
+    setPurchase(true)
+    borrarCarrito()
 }
  
 
-//required ---> validar form 
+//required ---> validar form importante por no usar libreria 
     return (
-
+      Purchase ? <h1 className='form_text'>GRACIAS POR TU COMPRA!</h1> :
       <div className='form_div'>
         <h1 className='form_text'>Complete los datos para finalizar la compra!</h1>
         <p className='form_text'>PRODUCTOS SELECCIONADOS</p>
