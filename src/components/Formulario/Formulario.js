@@ -112,7 +112,7 @@ const order = (e) => {
         
         <input className='form_campo' placeholder="Ingrese telefono" type="number" name="telefono" onChange={formEvent}  maxLength="10" value={Datos.telefono} required></input>
         
-        <input className='form_campo' placeholder="Ingrese mail" type="email" name="email" onChange={formEvent} maxLength="20" value={Datos.email} required></input>
+        <input className='form_campo' placeholder="Ingrese mail" type="email" name="email" onChange={formEvent} maxLength="40" value={Datos.email} required></input>
         
         <button  type="submit" className='form_button'  onClick={order}>Enviar</button>
         
