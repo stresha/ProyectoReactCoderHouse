@@ -5,7 +5,7 @@ import CartContext from '../../Context/Context'
 import { useContext } from 'react'
 import { getCategories } from '../../servicos/firebase' 
 import { useState , useEffect } from 'react'
-
+import { categoryOrder } from './Help'
 
 const NavBar = () => {
     
@@ -14,25 +14,11 @@ const NavBar = () => {
 
  const [categories, setCategories] = useState([])
 
- 
-
- const ordenCats = (categories) => {
-  categories.sort(function (a,b) {
-      if (a.orden > b.orden) {
-          return 1;
-      } 
-      if (a.orden < b.orden) {
-          return -1;
-      }
-      return 0
-  })
-}
-
 
 
  useEffect(() => {
   getCategories().then(categories => {
-    ordenCats(categories)
+    categoryOrder(categories)
       setCategories(categories)
   }).catch(error => {
       console.log(error)
