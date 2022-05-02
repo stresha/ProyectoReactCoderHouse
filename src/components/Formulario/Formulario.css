@@ -68,5 +68,20 @@
     box-shadow:  0 0 20px blue;
     transition: 2s;
 }
-
+.tienda{
+    margin-left: 35%;
+    margin-top: 20px;
+    border-radius: 45px;
+    border: navy solid 5px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    font-family: 'Fredoka', sans-serif;
+    text-shadow: 2px 2px 2px blue;
+    font-size: large;
+    width: 300px;
+    height:30px ;
+}
 

@@ -1,5 +1,5 @@
 import './Formulario.css'
-
+import { Link } from 'react-router-dom';
 import { useState } from "react";
 import CartContext from '../../Context/Context'
 import { useContext } from "react"
@@ -25,7 +25,7 @@ const [Datos, setDatos] = useState({
   });
 
 //mete datos de form en orden
- const cambio = (event) => {
+ const formEvent = (event) => {
    setDatos({
      ...Datos, 
      [event.target.name]: event.target.value
@@ -34,15 +34,15 @@ const [Datos, setDatos] = useState({
 
 
 // rnn + borrar cart
- const enviar = (event) => {
-  
+ const submit = (event) => {
+  event.preventDefault();
   
  }
 
 
 
 //crea orden toma imput de form + cart + saldo
-const crearOrden = () => {
+const order = (e) => {
   const objOrden = {
     buyer: {
       nombre: Datos.nombre,
@@ -72,7 +72,7 @@ const crearOrden = () => {
     .then(() => {
       if (outStock.length === 0) {
         const collectionRef = collection(firestoreDb, "orders");
-        return addDoc(collectionRef, objOrden); //Promesa
+        return addDoc(collectionRef, objOrden); 
       } else {
         return Promise.reject({name: "outStock",products: outStock});
       }
@@ -95,7 +95,7 @@ const crearOrden = () => {
 
 //required ---> validar form importante por no usar libreria 
     return (
-      Purchase ? <h1 className='form_text'>GRACIAS POR TU COMPRA!</h1> :
+      Purchase ? <div><h1 className='form_text'>GRACIAS POR TU COMPRA!</h1><Link to='/' className='tienda'> IR A LA TIENDA </Link> </div> :
       <div className='form_div'>
         <h1 className='form_text'>Complete los datos para finalizar la compra!</h1>
         <p className='form_text'>PRODUCTOS SELECCIONADOS</p>
@@ -107,14 +107,14 @@ const crearOrden = () => {
                     </li>)}
             </ul>
             
-      <form className='form' onSubmit={enviar}>  
-        <input  className='form_campo' placeholder="Ingrese nombre" type="text" name="nombre"  onChange={cambio} maxLength="10"  value={Datos.nombre}   required></input>
+      <form className='form' onSubmit={submit}>  
+        <input  className='form_campo' placeholder="Ingrese nombre" type="text" name="nombre"  onChange={formEvent} maxLength="10"  value={Datos.nombre}   required></input>
         
-        <input className='form_campo' placeholder="Ingrese telefono" type="number" name="telefono" onChange={cambio}  maxLength="10" value={Datos.telefono} required></input>
+        <input className='form_campo' placeholder="Ingrese telefono" type="number" name="telefono" onChange={formEvent}  maxLength="10" value={Datos.telefono} required></input>
         
-        <input className='form_campo' placeholder="Ingrese mail" type="email" name="email" onChange={cambio} maxLength="20" value={Datos.email} required></input>
+        <input className='form_campo' placeholder="Ingrese mail" type="email" name="email" onChange={formEvent} maxLength="20" value={Datos.email} required></input>
         
-        <button  type="submit" className='form_button'  onClick={crearOrden}>Enviar</button>
+        <button  type="submit" className='form_button'  onClick={order}>Enviar</button>
         
       </form>
 
