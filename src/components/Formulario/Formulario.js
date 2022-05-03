@@ -24,7 +24,7 @@ const [Datos, setDatos] = useState({
     email: "",
   });
 
-//mete datos de form en orden
+
  const formEvent = (event) => {
    setDatos({
      ...Datos, 
@@ -33,7 +33,7 @@ const [Datos, setDatos] = useState({
  }
 
 
-// rnn + borrar cart
+
  const submit = (event) => {
   event.preventDefault();
   
@@ -41,7 +41,7 @@ const [Datos, setDatos] = useState({
 
 
 
-//crea orden toma imput de form + cart + saldo
+
 const order = (e) => {
   const objOrden = {
     buyer: {
@@ -54,7 +54,7 @@ const order = (e) => {
   };
 
 
-  //magia de firebase (cargar order + actulizar stock)
+  
   getDocs(query(collectionRef, where(documentId(), "in", ids)))
     .then((response) => {
       response.docs.forEach((doc) => {
@@ -93,7 +93,7 @@ const order = (e) => {
 }
  
 
-//required ---> validar form importante por no usar libreria 
+
     return (
       Purchase ? <div><h1 className='form_text'>GRACIAS POR TU COMPRA!</h1><Link to='/' className='tienda'> IR A LA TIENDA </Link> </div> :
       <div className='form_div'>

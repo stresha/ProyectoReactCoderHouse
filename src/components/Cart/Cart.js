@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
     const { cart, borrarCarrito,borrarProducto, precioFinal, borrarTodos, getQuantity  } = useContext(CartContext)
 
 
-    //remplazamos  {/* {cart.length === 0 ? <Link to='/' className='cart_option'> IR A LA TIENDA </Link> : null} */}
+    
     if (getQuantity() === 0) {
         return (
             <div className='cart'>

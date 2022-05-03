@@ -5,13 +5,13 @@ import { useState, useEffect } from 'react'
 import { getProducts } from '../../servicos/firebase'
 
 const ItemListContainer = ()=> {
-    const [products, setProducts] = useState([]) // productos a filtrar
-    const [loading, setLoading] = useState(true) //carga , se pone en finally, ya que lo hace al final y cambiamos estado, asi como un switch de tu boton js 
+    const [products, setProducts] = useState([]) 
+    const [loading, setLoading] = useState(true) 
 
     const { categoryId } = useParams()
 
 
-    // aca filtramos por cat, 
+   
     useEffect(() => {
         setLoading(true)
         getProducts(categoryId).then(items => {

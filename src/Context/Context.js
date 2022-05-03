@@ -11,10 +11,10 @@ export const CartContextProvider = ({ children }) => {
     
     const agregarProducto = (product, quantity) => {
         
-  //creo estado con valor 
+  
        let cantidad = true ;
        
-       //mapeo el array y vemos si el id = id para no duplicar , suma cantidad de products
+       
         cart.filter((prod) => {
             if(prod.id===product.id) {
             prod.quantity =    quantity + prod.quantity;
@@ -23,7 +23,7 @@ export const CartContextProvider = ({ children }) => {
             }
   
         })
-        // pero si es como cantidad retorno obj
+        
         if (cantidad  ===true) {
             const objItemCart = {
                 ...product,
@@ -36,7 +36,7 @@ export const CartContextProvider = ({ children }) => {
             
     }
 
-    //borra 1 producto 
+   
 
     const borrarProducto = (id ) => {
         cart.filter((prod) => {
@@ -46,7 +46,7 @@ export const CartContextProvider = ({ children }) => {
                     setCart([...cart])
                 }
                 else {
-                    let carritoNuevo = cart.filter((item) => item.id !== id); // con esto si lego a 0 desaparece
+                    let carritoNuevo = cart.filter((item) => item.id !== id); 
                     setCart([...carritoNuevo]) 
                 }
 
@@ -59,13 +59,13 @@ export const CartContextProvider = ({ children }) => {
 
 
     
-    //borra todos esos productos del grupo (igual a item anterior)
+    
     const borrarTodos  = (id) => {
-        let carritoActualizado = cart.filter((item) => item.id !== id); // con esto si lego a 0 desaparece
+        let carritoActualizado = cart.filter((item) => item.id !== id); 
         setCart([...carritoActualizado]) 
     }
 
-    //suma productos 
+    
     const precioFinal = () => {
         let total = 0 
         for (const iterator of cart) {
@@ -77,12 +77,12 @@ export const CartContextProvider = ({ children }) => {
     }
 
 
-    // vuelve carrito un array vacio
+   
     const borrarCarrito = () => {
         setCart([])
     }
     
-    //sumamos cantidad al lado del carrito
+    
     const getQuantity = () => {
         let count = 0
         cart.forEach(prod => {
@@ -91,13 +91,6 @@ export const CartContextProvider = ({ children }) => {
 
         return count
     }
-
-    //funcion para ver si es v 
-    const estaEnCarrito = (id) => {
-        return cart.some(item => item.id === id)
-    }
-
-    
 
 
     return (
