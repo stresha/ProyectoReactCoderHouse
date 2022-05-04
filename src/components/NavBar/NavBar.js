@@ -9,7 +9,7 @@ import { categoryOrder } from './Help'
 
 const NavBar = () => {
     
-  //traemos el contador para que si no hay nada no este 
+ 
  const {getQuantity } = useContext(CartContext)
 
  const [categories, setCategories] = useState([])

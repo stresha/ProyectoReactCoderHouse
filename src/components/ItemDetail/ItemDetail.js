@@ -2,14 +2,15 @@ import { React } from "react";
 import { useState, useContext } from 'react' 
 import ItemCount from "../ItemCount/ItemCount";
 import './ItemDetail.css'
-import swal from "sweetalert"; // agrego libreria de sweet alert para personalizar alert
+import swal from "sweetalert"; 
 import { Link } from 'react-router-dom'
 import CartContext from '../../Context/Context'
 
 
+
 //
 const ItemDetail  = ({ name, id, price, description, stock, img }) => {
- 
+
   const { agregarProducto } = useContext(CartContext)
   const compraOnAdd = (count) => {
         agregarProducto({ id, name, price, img}, count)

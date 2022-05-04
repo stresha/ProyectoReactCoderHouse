@@ -101,8 +101,7 @@ export const CartContextProvider = ({ children }) => {
             getQuantity,
             borrarProducto,
             precioFinal,
-            borrarTodos,
-            estaEnCarrito
+            borrarTodos
 
            
             
