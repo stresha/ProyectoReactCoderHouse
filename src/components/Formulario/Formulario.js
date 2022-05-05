@@ -3,17 +3,13 @@ import { Link } from 'react-router-dom';
 import { useState } from "react";
 import CartContext from '../../Context/Context'
 import { useContext } from "react"
-import { firestoreDb } from '../../servicos/main'
-import {addDoc, collection, query, where, getDocs, documentId, writeBatch} from 'firebase/firestore';
 import swal from 'sweetalert';
+import { crearOrder } from "../../servicos/firebase";
 
 
 const Formulario = () => {
 const { cart , precioFinal, borrarCarrito } = useContext(CartContext)
-const batch = writeBatch(firestoreDb);
-const outStock = [];
-const ids = cart.map((prod) => prod.id);
-const collectionRef = collection(firestoreDb, "products");
+
 const [ Purchase, setPurchase ] = useState(false);
 
 
@@ -32,15 +28,10 @@ const [Datos, setDatos] = useState({
    })
  }
 
-
-
  const submit = (event) => {
   event.preventDefault();
   
  }
-
-
-
 
 const order = (e) => {
   const objOrden = {
@@ -53,45 +44,27 @@ const order = (e) => {
     total: precioFinal()
   };
 
-
-  
-  getDocs(query(collectionRef, where(documentId(), "in", ids)))
-    .then((response) => {
-      response.docs.forEach((doc) => {
-        const dataDoc = doc.data();
-        const updateOrder = objOrden.items.find(
-          (prod) => prod.id === doc.id
-        ).quantity;
-        if (dataDoc.stock >= updateOrder) {
-          batch.update(doc.ref, { stock: dataDoc.stock - updateOrder });
-        } else {
-          outStock.push({ id: doc.id, dataDoc });
-        }
-      });
-    })
-    .then(() => {
-      if (outStock.length === 0) {
-        const collectionRef = collection(firestoreDb, "orders");
-        return addDoc(collectionRef, objOrden); 
-      } else {
-        return Promise.reject({name: "outStock",products: outStock});
-      }
-    })
-    .then(({ id }) => {
-      batch.commit()
-      swal(` COMPRASTE ! \n Nuestros gatitos estan preparando el pedido !  \n 🐈  orden :  ${id}  🐈 \n No pierdas este numero ! `)
-    })
-    .catch((error) => {
-      if (error && error.name === "outStock" && error.products.length > 0) {
-        console.log(error.products);
-      } else {
-        console.log(error);
-      }
-    });
-    setPurchase(true)
+  crearOrder(cart, objOrden).then(id => {
     borrarCarrito()
-}
- 
+    setPurchase(true);
+    swal(` COMPRASTE ! \n Nuestros gatitos estan preparando el pedido !  \n 🐈  orden :  ${id}  🐈 \n No pierdas este numero ! `)
+    }).catch((error) => {
+    if (
+      error &&
+      error.name === "outOfStockError" &&
+      error.products.length > 0
+    ) {
+      console.log(error.products);
+    } else {
+      console.log(error);
+    }
+    }).finally(() => {
+      Purchase(false)
+    })
+
+
+  }
+
 
 
     return (
