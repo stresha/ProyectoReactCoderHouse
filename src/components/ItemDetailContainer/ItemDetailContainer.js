@@ -1,10 +1,11 @@
 import React from "react"
 import ItemDetail from "../ItemDetail/ItemDetail"
 import { getProductById } from "../../servicos/firebase"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { useParams } from "react-router-dom"
 import { useAsync} from "../../Hook/Hook"
 import swal from "sweetalert"; 
+import './ItemDetailContainer.css'
 
 const ItemDetailContainer = () => {
 

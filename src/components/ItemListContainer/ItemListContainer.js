@@ -34,7 +34,7 @@ const ItemListContainer = ()=> {
                 <h1 className="text_busqueda">🐈‍ Nuestros gatitos estan buscando los productos.....🐈‍ </h1> :  
                 products.length > 0 ? 
                     <ItemList products={products}/> : 
-                    <h1>No se encontraron productos!</h1>
+                    <h1 className="text_busqueda">No se encontraron productos!</h1>
             }
         </div>
     )    

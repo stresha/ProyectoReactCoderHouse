@@ -4,12 +4,12 @@ import  { getFirestore}  from  "firebase/firestore"
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAXI06HKce9ytgWwftsnZPnisKAEsRe0sM",
-  authDomain: "back-benitoreact.firebaseapp.com",
-  projectId: "back-benitoreact",
-  storageBucket: "back-benitoreact.appspot.com",
-  messagingSenderId: "818767026804",
-  appId: "1:818767026804:web:0187579c1d584853e98f21"
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId
 };
 
 

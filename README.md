@@ -40,4 +40,4 @@ y un boton, para finalizar compra
 Al finalizar compra hay un formulario para completar los datos 
 y luego la compra (productos elegidos + datos del comprador) se conectan a una base de datos (fire base)
 
-
+Se utilizaron variables de entorno para las credenciales

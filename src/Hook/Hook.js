@@ -5,7 +5,7 @@ export const useAsync = (
     asyncFn,
     successFn,
     errorFn,
-    dep = [],
+    dependencies = [],
     finallyFn,
     returnFn
 ) => {
@@ -27,5 +27,5 @@ export const useAsync = (
             returnFn && returnFn()
             isActive = false
         }
-    }, dep)
+    }, dependencies)
 }
