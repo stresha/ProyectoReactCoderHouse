@@ -2,20 +2,19 @@ import { React } from "react";
 import { useState, useContext } from 'react' 
 import ItemCount from "../ItemCount/ItemCount";
 import './ItemDetail.css'
-import swal from "sweetalert"; 
 import { Link } from 'react-router-dom'
 import CartContext from '../../Context/Context'
-
+import { useNotification } from "../../components/Alert/Alert";
 
 
 //
 const ItemDetail  = ({ name, id, price, description, stock, img }) => {
-
+  const { setNotification } = useNotification()
   const { agregarProducto } = useContext(CartContext)
   const compraOnAdd = (count) => {
         agregarProducto({ id, name, price, img}, count)
         setquantity(count)
-        swal(`Agregado al carrito ${name}! \n cantidad de productos: ${count} ! \n excelente eleccion!`)
+        setNotification("success",`Agregado al carrito ${name}! \n cantidad de productos: ${count} ! \n excelente eleccion!`)
     }
    
     const  [quantity , setquantity] = useState (0)

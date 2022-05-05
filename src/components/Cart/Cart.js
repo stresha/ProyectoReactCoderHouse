@@ -19,7 +19,7 @@ import { Link } from 'react-router-dom'
         
     }
     return (
-        <div>
+        <div className='bloque'>
            <div className='cart'>
             <h1 className='cart'>CARRITO DE COMPRAS ! 🐈</h1>
             <button className='button_compra' onClick={borrarCarrito}>Vaciar carrito</button>

@@ -8,6 +8,7 @@ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCont
 import Cart from './components/Cart/Cart';
 import { CartContextProvider } from './Context/Context'
 import Formulario from './components/Formulario/Formulario';
+import {NotificationProvider} from './components/Alert/Alert'
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
     <div className="App-header">
     <div className="App">
       <Banner/>
-    
+      <NotificationProvider>
       <CartContextProvider>
       <BrowserRouter>
       <NavBar/>
@@ -31,6 +32,7 @@ function App() {
       </Routes>
       </BrowserRouter>
       </CartContextProvider>
+      </NotificationProvider>
      
      <Footer/>
     </div>

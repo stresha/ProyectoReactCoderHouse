@@ -3,14 +3,15 @@ import { Link } from 'react-router-dom';
 import { useState } from "react";
 import CartContext from '../../Context/Context'
 import { useContext } from "react"
-import swal from 'sweetalert';
 import { crearOrder } from "../../servicos/firebase";
+import { useNotification } from "../../components/Alert/Alert";
 
 
 const Formulario = () => {
 const { cart , precioFinal, borrarCarrito } = useContext(CartContext)
 
 const [ Purchase, setPurchase ] = useState(false);
+const { setNotification } = useNotification()
 
 
 
@@ -47,21 +48,18 @@ const order = (e) => {
   crearOrder(cart, objOrden).then(id => {
     borrarCarrito()
     setPurchase(true);
-    swal(` COMPRASTE ! \n Nuestros gatitos estan preparando el pedido !  \n 🐈  orden :  ${id}  🐈 \n No pierdas este numero ! `)
+    setNotification("success",`Nuestros gatitos estan preparando el pedido !\n🐈orden : ${id} 🐈`)
     }).catch((error) => {
     if (
-      error &&
-      error.name === "outOfStockError" &&
-      error.products.length > 0
+      error && error.name === "outOfStockError" &&error.products.length > 0
     ) {
       console.log(error.products);
     } else {
       console.log(error);
     }
     }).finally(() => {
-      Purchase(false)
+      setPurchase(true)
     })
-
 
   }
 

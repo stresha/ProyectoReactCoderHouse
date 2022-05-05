@@ -4,14 +4,15 @@ import { getProductById } from "../../servicos/firebase"
 import { useState } from "react"
 import { useParams } from "react-router-dom"
 import { useAsync} from "../../Hook/Hook"
-import swal from "sweetalert"; 
+import { useNotification } from "../../components/Alert/Alert";
 import './ItemDetailContainer.css'
+
 
 const ItemDetailContainer = () => {
 
     const [prod,setProd] = useState ()
     const [loading, setLoading] = useState(true)
-
+    const { setNotification } = useNotification()
     const { id } = useParams()
 
    
@@ -20,7 +21,7 @@ const ItemDetailContainer = () => {
         setLoading, 
         () => getProductById(id), 
         setProd, 
-        () => swal('Hubo un error al cargar el producto nuestros gatitos estan trabajando '), 
+        () => setNotification('error','Hubo un error al cargar el producto nuestros gatitos estan trabajando '), 
         [id]
     )
 
