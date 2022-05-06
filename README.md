@@ -17,7 +17,7 @@ y para correr la app npm start
 
 
 -link con la navegablidad de la app (se encuentra ademas de manera local en la app en  public/proyectoReactGif)
-https://gifyu.com/image/Ss3hm
+
 
 Dependencias: 
 -bootstramp (por el momento no se esta utilizando), ya que se utilizo css en su estado puro para los estilos.
